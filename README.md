@@ -20,6 +20,18 @@ adding the following to a shell startup script like `.profile`:
 
 ```alias qemu='LD_PRELOAD=/usr/local/lib/qemu-hack.so qemu-system-i386'```
 
+## Status
+
+Unless the program relies heavily on the stubbed syscalls, its speed shouldn't be
+affected much. Any slowness is probably due to iSH's nature as an emulator.
+
+- `qemu-system-i386` works, but it's so slow it can't be used for much more than testing
+16-bit real mode programs. Emulating a whole Linux machine would probably be
+unbearably slow.
+
+- `ffmpeg` also works, but is also horribly slow (I got 0.01x conversion speed on a
+relatively new iPhone).
+
 ## Why?
 
 Because iSH doesn't include these stubbed syscalls yet. If you're tired of using this
